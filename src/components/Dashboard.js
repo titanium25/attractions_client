@@ -7,7 +7,9 @@ import LocationOffIcon from '@mui/icons-material/LocationOff';
 import AttractionsIcon from '@mui/icons-material/Attractions';
 import CloseIcon from '@mui/icons-material/Close';
 import {Link} from 'react-router-dom'
+import GoogleMapReact from 'google-map-react';
 
+const AnyReactComponent = ({ text }) => <div><LocationOnIcon/> {text}</div>
 const Dashboard = () => {
     const [show, setShow] = useState(false);
     const location = UseGeolocation();
@@ -51,6 +53,21 @@ const Dashboard = () => {
                         >
                             Find nearest attractions
                         </Button>
+                        <br/>
+                        <br/>
+                        <div style={{ height: '60vh', width: '600px' }}>
+                            <GoogleMapReact
+                                bootstrapURLKeys={{ key: 'AIzaSyDeEh3fjjN5bIoRfQvfhB9nwaWIFxiACpQ' }}
+                                defaultZoom={8}
+                                defaultCenter={{ lat: location.coordinates.lat, lng: location.coordinates.lng }}
+                            >
+                                <AnyReactComponent
+                                    lat={location.coordinates.lat}
+                                    lng={location.coordinates.lng}
+                                    text="My Location"
+                                />
+                            </GoogleMapReact>
+                        </div>
                     </div>
                     : null
             }
