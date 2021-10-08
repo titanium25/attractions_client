@@ -55,7 +55,7 @@ const Dashboard = () => {
                         </Button>
                         <br/>
                         <br/>
-                        <div style={{ height: '60vh', width: '600px' }}>
+                        <div style={{ height: '60vh', width: '350px' }}>
                             <GoogleMapReact
                                 bootstrapURLKeys={{ key: 'AIzaSyDeEh3fjjN5bIoRfQvfhB9nwaWIFxiACpQ' }}
                                 defaultZoom={8}
