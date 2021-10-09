@@ -112,7 +112,7 @@ const Attractions = () => {
             .data
             .map(v => ({
                 ...v, distance: CalcDistance(
-                    [state.location.coordinates.lat, state.location.coordinates.lng],
+                    [state.source.coordinates.lat, state.source.coordinates.lng],
                     [v.Coordinates.lat, v.Coordinates.lng]) ^ 0
             }))
             .filter(v => v.distance < maxDistance)
@@ -127,9 +127,9 @@ const Attractions = () => {
         <div>
 
             My coordinates: <br/>
-            latitude: {state.location.coordinates.lat}
+            latitude: {state.source.coordinates.lat}
             <br/>
-            longitude: {state.location.coordinates.lng}
+            longitude: {state.source.coordinates.lng}
             <br/><br/>
             <Box width={300}>
                 <Typography id="continuous-slider" gutterBottom>

@@ -41,7 +41,7 @@ const Attractions = () => {
             .data
             .map(v => ({
                 ...v, distance: CalcDistance(
-                    [state.location.coordinates.lat, state.location.coordinates.lng],
+                    [state.source.coordinates.lat, state.source.coordinates.lng],
                     [v.Coordinates.lat, v.Coordinates.lng]) ^ 0
             }))
             .filter(v => v.distance <= maxDistance)
@@ -49,10 +49,7 @@ const Attractions = () => {
 
         setAtt(attArr)
 
-        // const unique = [...new Set(att.map(item => item.Attraction_Type))];
-        // setAttType(unique)
-
-    }, [maxDistance, attType, fav])
+    }, [maxDistance, attType])
 
     const handleDistance = (event, newValue) => {
         setMaxDistance(newValue);
@@ -76,13 +73,17 @@ const Attractions = () => {
 
     const reset = () => {
         setMaxDistance(30);
-        setAttType(null)
-        setType(null)
+        setAttType([])
+        setType('')
     }
 
     return (
         <div>
-
+            My coordinates: <br/>
+            latitude: {state.source.coordinates.lat}
+            <br/>
+            longitude: {state.source.coordinates.lng}
+            <br/><br/>
             <Box width={300}>
                 <Typography id="continuous-slider" gutterBottom>
                     Max Distance: {maxDistance} km
@@ -107,8 +108,8 @@ const Attractions = () => {
                         onChange={handleType}
                     >
                         {
-                            [...new Set(att.map(item => item.Attraction_Type))]
-                                .map(x => <MenuItem value={x}>{x}</MenuItem>)
+                            [...new Set(att.map((item) => item.Attraction_Type))]
+                                .map((x, index) => <MenuItem value={x} key={index}>{x}</MenuItem>)
                         }
                     </Select>
                 </FormControl>
