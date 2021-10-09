@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {useLocation} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import CalcDistance from "../utils/CalcDistance";
 import attDAL from '../adapters/AttDAL';
 import MUIDataTable from "mui-datatables";
 import Box from "@mui/material/Box";
 import {Slider, Typography} from "@material-ui/core";
+import Button from "@mui/material/Button";
 
 const columns = [
     {
@@ -143,6 +144,8 @@ const Attractions = () => {
                     aria-labelledby="continuous-slider"
                     valueLabelDisplay="auto" />
             </Box>
+            <Button variant="outlined" component={Link} to="/">Back to home page</Button>
+            <br/> <br/>
             <MUIDataTable
                 title={"Near by attractions"}
                 data={att}

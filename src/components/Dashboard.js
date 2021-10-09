@@ -71,6 +71,10 @@ const Dashboard = () => {
             : setSource({coordinates: {lat: coords.lat, lng: coords.lng}})
     }
 
+    function onChangeDef() {
+        setSource(location)
+    }
+
     return (
         <div className="centered column">
             <Button
@@ -114,7 +118,6 @@ const Dashboard = () => {
                                 variant="outlined"
                                 onChange={(event) => setSearchAddress(event.target.value)}
                             />
-                            {/*<Button variant="outlined" onClick={}>Search</Button>*/}
 
                             <Typography variant="h6" gutterBottom component="div">
                                 Address latitude: {coords.lat} <br/>
@@ -127,7 +130,7 @@ const Dashboard = () => {
                                 <RadioGroup
                                     row
                                     aria-label="Options"
-                                    // defaultValue={source}
+                                    defaultValue={onChangeDef}
                                     name="radio-buttons-group"
                                     onChange={(e) => {onChange(e)}}
                                 >
