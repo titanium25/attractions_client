@@ -2,9 +2,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
 .column {
   -webkit-flex-direction: column;
   flex-direction: column;
+}
+
+.main {
+  margin-left: 50px;
+  margin-top: 50px;
+}
+.marker-container {
+  color: red;
+
+  justify-content: center;
+  font-size: medium;
+  /*font-size: 30px;*/
 }

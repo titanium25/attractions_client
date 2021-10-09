@@ -3,6 +3,8 @@ import {useLocation} from "react-router-dom";
 import CalcDistance from "../utils/CalcDistance";
 import attDAL from '../adapters/AttDAL';
 import MUIDataTable from "mui-datatables";
+import Box from "@mui/material/Box";
+import {Slider, Typography} from "@material-ui/core";
 
 const columns = [
     {
@@ -101,6 +103,8 @@ const options = {
 const Attractions = () => {
     const {state} = useLocation();
     const [att, setAtt] = useState([])
+    const [maxDistance, setMaxDistance] = React.useState(40);
+
 
     useEffect(async () => {
         const response = await attDAL.getAtt();
@@ -111,9 +115,13 @@ const Attractions = () => {
                     [state.location.coordinates.lat, state.location.coordinates.lng],
                     [v.Coordinates.lat, v.Coordinates.lng]) ^ 0
             }))
-            .filter(v => v.distance < 40)
+            .filter(v => v.distance < maxDistance)
         setAtt(z)
-    }, [])
+    }, [maxDistance])
+
+    const handleChange = (event, newValue) => {
+        setMaxDistance(newValue);
+    };
 
     return (
         <div>
@@ -123,7 +131,18 @@ const Attractions = () => {
             <br/>
             longitude: {state.location.coordinates.lng}
             <br/><br/>
-
+            <Box width={300}>
+                <Typography id="continuous-slider" gutterBottom>
+                    Max Distance: {maxDistance} km
+                </Typography>
+                <Slider
+                    // defaultValue={50}
+                    value={maxDistance}
+                    onChange={handleChange}
+                    aria-label="Default"
+                    aria-labelledby="continuous-slider"
+                    valueLabelDisplay="auto" />
+            </Box>
             <MUIDataTable
                 title={"Near by attractions"}
                 data={att}
