@@ -122,7 +122,7 @@ const Attractions = () => {
 
             <br/><br/>
             <TableContainer component={Paper}>
-                <Table sx={{minWidth: 650}} aria-label="table">
+                <Table sx={{minWidth: 650, background: '#fafafa'}} aria-label="table">
                     <TableHead>
                         <TableRow>
                             <TableCell align="center"/>
@@ -148,7 +148,7 @@ const Attractions = () => {
                                 </TableCell>
 
                                 <TableCell align="center">
-                                    <a href={row.URL} about="_blank"> {row.Name}</a>
+                                    <a href={row.URL} target="_blank"> {row.Name}</a>
                                 </TableCell>
                                 <TableCell align="center">{row.distance}</TableCell>
                                 <TableCell align="center">{row.VendorId}</TableCell>
