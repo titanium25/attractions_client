@@ -51,16 +51,19 @@ const Dashboard = () => {
     }
 
 
-    // Get address from latitude & longitude.
-    Geocode.fromLatLng(location?.coordinates.lat, location?.coordinates.lng).then(
-        (response) => {
-            const getAddress = response.results[0].formatted_address;
-            address.key1 = getAddress; //update without rendering
-        },
-        (error) => {
-            // console.error(error);
-        }
-    );
+    if(!location.error){
+        // Get address from latitude & longitude.
+        Geocode.fromLatLng(location?.coordinates.lat, location?.coordinates.lng).then(
+            (response) => {
+                const getAddress = response.results[0].formatted_address;
+                address.key1 = getAddress; //update without rendering
+            },
+            (error) => {
+                // console.error(error);
+            }
+        );
+    }
+
 
     function onChange(e) {
         console.log(e.target.value)
