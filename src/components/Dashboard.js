@@ -106,7 +106,7 @@ const Dashboard = () => {
                         <Box
                             component="form"
                             sx={{
-                                '& > :not(style)': {m: 1, width: '50ch'},
+                                '& > :not(style)': {m: 1},
                             }}
                             noValidate
                             autoComplete="off"
@@ -174,7 +174,7 @@ const Dashboard = () => {
                         </Button>
                         <br/>
                         <br/>
-                        <div style={{height: '60vh', width: '450px'}}>
+                        <div style={{height: '50vh', width: '350px'}}>
                             <GoogleMapReact
                                 bootstrapURLKeys={{key: 'AIzaSyDeEh3fjjN5bIoRfQvfhB9nwaWIFxiACpQ'}}
                                 defaultZoom={10}
