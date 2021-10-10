@@ -59,7 +59,7 @@ const Attractions = () => {
         const index = fav.indexOf(id)
         if (index > -1) {
             fav.splice(index, 1);
-            setFav(fav)
+            setFav([...fav])
         } else {
             setFav([...fav, id])
         }
