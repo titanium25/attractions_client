@@ -20,7 +20,7 @@ import FormLabel from '@mui/material/FormLabel';
 
 
 // set Google Maps Geocoding API for purposes of quota management. Its optional but recommended.
-Geocode.setApiKey("AIzaSyDeEh3fjjN5bIoRfQvfhB9nwaWIFxiACpQ");
+Geocode.setApiKey("****");
 
 // set response language. Defaults to english.
 Geocode.setLanguage("en");
